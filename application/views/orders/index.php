@@ -32,7 +32,7 @@
             <span><strong> <i class="fas fa-check-circle"></i> </strong></span> <?php echo $this->session->flashdata('success'); ?>
           </div>
         <?php elseif ($this->session->flashdata('error')) : ?>
-          <div class="alert alert-error alert-dismissible" role="alert">
+          <div class="alert alert-danger alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <span><strong> <i class="fas fa-times-circle"></i> </strong></span> <?php echo $this->session->flashdata('error'); ?>
           </div>
@@ -171,7 +171,7 @@
 
             } else {
 
-              $("#messages").html('<div class="alert alert-error alert-dismissible" role="alert">' +
+              $("#messages").html('<div class="alert alert-danger alert-dismissible" role="alert">' +
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
                 '<strong> <i class="fas fa-times-circle"></i> </strong>' + response.messages +
                 '</div>');

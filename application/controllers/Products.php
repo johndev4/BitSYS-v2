@@ -286,7 +286,7 @@ class Products extends Admin_Controller
             // check whether product exists in order
             if ($this->db->where(['product_id' => $product_id])->from("orders_item")->count_all_results() > 0) {
                 $response['success'] = false;
-                $response['messages'] = "Products exists in the orders";
+                $response['messages'] = "Product exists in the orders";
             } else {
                 $delete_image = $this->model_products->delete_product_image($product_id);
                 if ($delete_image == true) {
