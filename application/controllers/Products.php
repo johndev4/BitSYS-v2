@@ -57,13 +57,13 @@ class Products extends Admin_Controller
 
             $img = '<img src="' . base_url($value['image']) . '" alt="' . $value['name'] . '" class="img-circle" width="50" height="50" />';
 
-            $availability = ($value['availability'] == 1) ? '<span class="label label-success">Active</span>' : '<span class="label label-warning">Inactive</span>';
+            $availability = ($value['availability'] == 1) ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-warning">Inactive</span>';
 
             $qty_status = '';
             if ($value['qty'] <= 10) {
-                $qty_status = '<span class="label label-warning">Low !</span>';
+                $qty_status = '<span class="badge badge-warning">Low !</span>';
             } else if ($value['qty'] <= 0) {
-                $qty_status = '<span class="label label-danger">Out of stock !</span>';
+                $qty_status = '<span class="badge badge-danger">Out of stock !</span>';
             }
 
 
