@@ -174,7 +174,7 @@
 						<div class="card-footer">
 							<input type="hidden" name="service_charge_rate" value="<?php echo $company_data['service_charge_value'] ?>" autocomplete="off">
 							<input type="hidden" name="vat_charge_rate" value="<?php echo $company_data['vat_charge_value'] ?>" autocomplete="off">
-							<a target="__blank" href="<?php echo base_url() . 'orders/printDiv/' . $order_data['order']['id'] ?>" class="btn btn-default">Print</a>
+							<a target="__blank" href="<?php echo base_url() . 'orders/printReceipt/' . $order_data['order']['id'] ?>" class="btn btn-default">Print</a>
 							<button type="submit" class="btn btn-primary">Save Changes</button>
 							<a href="<?php echo base_url('orders/') ?>" class="btn btn-warning">Back</a>
 						</div>

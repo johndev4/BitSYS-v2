@@ -62,7 +62,8 @@ class Model_products extends CI_Model
 		return $query->num_rows();
 	}
 
-	public function getProductImagePath($id){
+	public function getProductImagePath($id)
+	{
 		return $this->db->get_where('products', array('id' => $id))->row_array()['image'];
 	}
 }

@@ -51,7 +51,7 @@ class Orders extends Admin_Controller
 			$buttons = '';
 
 			if (in_array('viewOrder', $this->permission)) {
-				$buttons .= '<a target="__blank" href="' . base_url('orders/printDiv/' . $value['id']) . '" class="btn btn-default"><i class="fa fa-print"></i></a>';
+				$buttons .= '<a target="__blank" href="' . base_url('orders/printReceipt/' . $value['id']) . '" class="btn btn-default"><i class="fa fa-print"></i></a>';
 			}
 
 			if (in_array('updateOrder', $this->permission)) {
@@ -236,147 +236,15 @@ class Orders extends Admin_Controller
 	* It gets the product id and fetch the order data. 
 	* The order print logic is done here 
 	*/
-	public function printDiv($id)
+	public function printReceipt($id)
 	{
 		if (!in_array('viewOrder', $this->permission)) {
 			redirect('dashboard', 'refresh');
 		}
 
 		if ($id) {
-			$order_data = $this->model_orders->getOrdersData($id);
-			$orders_items = $this->model_orders->getOrdersItemData($id);
-			$company_info = $this->model_company->getCompanyData(1);
-
-			$order_date = date('d/m/Y', $order_data['date_time']);
-			$paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
-
-			$html = '<!-- Main content -->
-			<!DOCTYPE html>
-			<html>
-			<head>
-			  <meta charset="utf-8">
-			  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-			  <title>' . $order_data['bill_no'] . '_order_invoice - ' . $order_date . '</title>
-			  <!-- Tell the browser to be responsive to screen width -->
-			  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-			  <!-- Bootstrap 3.3.7 -->
-			  <link rel="stylesheet" href="' . base_url('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') . '">
-			  <!-- Font Awesome -->
-			  <link rel="stylesheet" href="' . base_url('assets/bower_components/font-awesome/css/font-awesome.min.css') . '">
-			  <link rel="stylesheet" href="' . base_url('assets/dist/css/AdminLTE.min.css') . '">
-			</head>
-			<body onload="window.print();">
-			
-			<div class="wrapper" style="margin:40px;">
-			  <section class="invoice">
-			    <!-- title row -->
-			    <div class="row">
-			      <div class="col-xs-12">
-			        <h2 class="page-header">
-			          ' . $company_info['company_name'] . '
-			          <small class="pull-right">Date: ' . $order_date . '</small>
-			        </h2>
-			      </div>
-			      <!-- /.col -->
-			    </div>
-			    <!-- info row -->
-			    <div class="row invoice-info">
-			      
-			      <div class="col-sm-4 invoice-col">
-			        
-			        <b>Bill ID:</b> ' . $order_data['bill_no'] . '<br>
-			        <b>Name:</b> ' . $order_data['customer_name'] . '<br>
-			        <b>Address:</b> ' . $order_data['customer_address'] . ' <br />
-			        <b>Phone:</b> ' . $order_data['customer_phone'] . '
-			      </div>
-			      <!-- /.col -->
-			    </div>
-			    <!-- /.row -->
-
-			    <!-- Table row -->
-			    <div class="row">
-			      <div class="col-xs-12 table-responsive">
-			        <table class="table table-striped">
-			          <thead>
-			          <tr>
-			            <th>Product name</th>
-			            <th>Unit Price</th>
-			            <th>Qty</th>
-			            <th>Amount</th>
-			          </tr>
-			          </thead>
-			          <tbody>';
-
-			foreach ($orders_items as $k => $v) {
-
-				$product_data = $this->model_products->getProductData($v['product_id']);
-
-				$html .= '<tr>
-				            <td>' . $product_data['name'] . '</td>
-				            <td>' . $v['rate'] . '</td>
-				            <td>' . $v['qty'] . '</td>
-				            <td>' . $v['amount'] . '</td>
-			          	</tr>';
-			}
-
-			$html .= '</tbody>
-			        </table>
-			      </div>
-			      <!-- /.col -->
-			    </div>
-			    <!-- /.row -->
-
-			    <div class="row">
-			      
-			      <div class="col-xs-6 pull pull-right">
-
-			        <div class="table-responsive">
-			          <table class="table">
-			            <tr>
-			              <th style="width:50%">Gross Amount:</th>
-			              <td>' . $company_info['currency'] . ' ' . $order_data['gross_amount'] . '</td>
-			            </tr>';
-
-			if ($order_data['service_charge'] > 0) {
-				$html .= '<tr>
-				              <th>Service Charge (' . $order_data['service_charge_rate'] . '%)</th>
-				              <td>' . $company_info['currency'] . ' ' . $order_data['service_charge'] . '</td>
-				            </tr>';
-			}
-
-			if ($order_data['vat_charge'] > 0) {
-				$html .= '<tr>
-				              <th>Vat Charge (' . $order_data['vat_charge_rate'] . '%)</th>
-				              <td>' . $company_info['currency'] . ' ' . $order_data['vat_charge'] . '</td>
-				            </tr>';
-			}
-
-
-			$html .= ' <tr>
-			              <th>Discount:</th>
-			              <td>' . $company_info['currency'] . ' ' . $order_data['discount'] . '</td>
-			            </tr>
-			            <tr>
-			              <th>Net Amount:</th>
-			              <td>' . $company_info['currency'] . ' ' . $order_data['net_amount'] . '</td>
-			            </tr>
-			            <tr>
-			              <th>Paid Status:</th>
-			              <td>' . $paid_status . '</td>
-			            </tr>
-			          </table>
-			        </div>
-			      </div>
-			      <!-- /.col -->
-			    </div>
-			    <!-- /.row -->
-			  </section>
-			  <!-- /.content -->
-			</div>
-		</body>
-	</html>';
-
-			echo $html;
+			$this->data['id'] = $id;
+			$this->load->view('print_receipt/index', $this->data);
 		}
 	}
 }
