@@ -244,7 +244,7 @@ class Orders extends Admin_Controller
 
 		if ($id) {
 			$this->data['id'] = $id;
-			$this->load->view('print_receipt/index', $this->data);
+			$this->load->view('orders/print_receipt', $this->data);
 		}
 	}
 }
