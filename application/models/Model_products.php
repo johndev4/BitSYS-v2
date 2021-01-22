@@ -62,15 +62,7 @@ class Model_products extends CI_Model
 		return $query->num_rows();
 	}
 
-	public function delete_product_image($id='') {
-        $image_path = $this->db->get_where('products', array('id'=>$id))->row_array()['image'];
-        if (file_exists($image_path)) {
-			unlink($image_path);
-		}
-		if (!file_exists($image_path)) {
-			return true;
-		} else {
-			return false;
-		}
-    }
+	public function getProductImagePath($id){
+		return $this->db->get_where('products', array('id' => $id))->row_array()['image'];
+	}
 }

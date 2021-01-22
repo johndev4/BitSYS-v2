@@ -30,8 +30,10 @@
             <select class="form-control" name="select_year" id="select_year">
               <?php foreach ($report_years as $key => $value) : ?>
                 <option value="<?php echo $value ?>" <?php if ($value == $selected_year) {
-                                                        echo "selected";
-                                                      } ?>><?php echo $value; ?></option>
+                                                        echo 'selected="selected"';
+                                                      } ?>>
+                  <?php echo $value; ?>
+                </option>
               <?php endforeach ?>
             </select>
           </div>
@@ -127,16 +129,16 @@
     var areaChartData = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       datasets: [{
-          label               : 'Digital Goods',
-          backgroundColor     : 'rgba(60,141,188,0.9)',
-          borderColor         : 'rgba(60,141,188,0.8)',
-          pointRadius          : false,
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : report_data
-        }]
+        label: 'Digital Goods',
+        backgroundColor: 'rgba(60,141,188,0.9)',
+        borderColor: 'rgba(60,141,188,0.8)',
+        pointRadius: false,
+        pointColor: '#3b8bba',
+        pointStrokeColor: 'rgba(60,141,188,1)',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgba(60,141,188,1)',
+        data: report_data
+      }]
     }
 
     //-------------
@@ -150,9 +152,9 @@
     barChartData.datasets[1] = temp0
 
     var barChartOptions = {
-      responsive              : true,
-      maintainAspectRatio     : false,
-      datasetFill             : false
+      responsive: true,
+      maintainAspectRatio: false,
+      datasetFill: false
     }
 
     var barChart = new Chart(barChartCanvas, {

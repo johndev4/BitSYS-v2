@@ -2,6 +2,10 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+// Constant Variables
+define('NO_FILE_TO_UPLOAD', '<p>You did not select a file to upload.</p>');
+define('DEFAULT_PRODUCT_IMAGE', 'assets/images/product_image/default.jpg');
+
 class Products extends Admin_Controller
 {
     public function __construct()
@@ -110,7 +114,7 @@ class Products extends Admin_Controller
                 'sku' => $this->input->post('sku'),
                 'price' => number_format($this->input->post('price'), 2, '.', ''),
                 'qty' => $this->input->post('qty'),
-                'image' => $upload_image,
+                'image' => ($upload_image == NO_FILE_TO_UPLOAD) ? DEFAULT_PRODUCT_IMAGE : $upload_image,
                 'description' => $this->input->post('description'),
                 'attribute_value_id' => json_encode($this->input->post('attributes_value_id')),
                 'brand_id' => json_encode($this->input->post('brands')),
@@ -288,7 +292,7 @@ class Products extends Admin_Controller
                 $response['success'] = false;
                 $response['messages'] = "Product exists in the orders";
             } else {
-                $delete_image = $this->model_products->delete_product_image($product_id);
+                $delete_image = $this->delete_product_image($product_id);
                 if ($delete_image == true) {
                     $delete = $this->model_products->remove($product_id);
                 } else {
@@ -309,5 +313,27 @@ class Products extends Admin_Controller
         }
 
         echo json_encode($response);
+    }
+
+    /*
+    * Delete the image that is not the DEFAULT_PRODUCT_IMAGE on file system
+    * and return false if this function failed to delete that image
+    */
+    public function delete_product_image($id = '')
+    {
+        $image_path = $this->model_products->getProductImagePath($id);
+        // prevent to delete DEFAULT_PRODUCT_IMAGE on file system
+        if (file_exists($image_path) && $image_path == DEFAULT_PRODUCT_IMAGE){
+            return true;
+        }
+
+        if (file_exists($image_path)) {
+            unlink($image_path);
+        }
+        if (!file_exists($image_path)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
