@@ -42,7 +42,7 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 			<?php endif; ?>
 
 			<!-- <div id="logo">
-				<img id="image" src="<?= base_url('assets/invoice/images/logo.png'); ?>" alt="logo">
+				<img id="image" src="<?= base_url(BITSYS_LOGO); ?>" alt="logo">
 			</div> -->
 
 		</div>
@@ -63,13 +63,12 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 					<td class="meta-head">Date</td>
 					<td> <?= $order_date; ?> </td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td class="meta-head">Amount Due</td>
 					<td>
 						<div class="due"> <?= $company_info['currency'] . ' ' . $order_data['net_amount']; ?> </div>
 					</td>
-				</tr>
-
+				</tr> -->
 			</table>
 
 		</div>

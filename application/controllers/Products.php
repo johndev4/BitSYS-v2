@@ -2,10 +2,6 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-// Constant Variables
-define('NO_FILE_TO_UPLOAD', '<p>You did not select a file to upload.</p>');
-define('DEFAULT_PRODUCT_IMAGE', 'assets/images/product_image/default.jpg');
-
 class Products extends Admin_Controller
 {
     public function __construct()
@@ -114,7 +110,7 @@ class Products extends Admin_Controller
                 'sku' => $this->input->post('sku'),
                 'price' => number_format($this->input->post('price'), 2, '.', ''),
                 'qty' => $this->input->post('qty'),
-                'image' => ($upload_image == NO_FILE_TO_UPLOAD) ? DEFAULT_PRODUCT_IMAGE : $upload_image,
+                'image' => ($upload_image == NO_FILE_TO_UPLOAD) ? DEFAULT_IMAGE : $upload_image,
                 'description' => $this->input->post('description'),
                 'attribute_value_id' => json_encode($this->input->post('attributes_value_id')),
                 'brand_id' => json_encode($this->input->post('brands')),
@@ -123,7 +119,7 @@ class Products extends Admin_Controller
                 'availability' => $this->input->post('availability'),
             );
 
-            if ($upload_image == '<p>The file you are attempting to upload is larger than the permitted size.</p>') {
+            if ($upload_image == FILE_SIZE_EXCEEDS) {
                 $this->session->set_flashdata('upload_error', $upload_image);
                 redirect('products/create', 'refresh');
             }
@@ -316,14 +312,14 @@ class Products extends Admin_Controller
     }
 
     /*
-    * Delete the image that is not the DEFAULT_PRODUCT_IMAGE on file system
+    * Delete the image that is not the DEFAULT_IMAGE on file system
     * and return false if this function failed to delete that image
     */
     public function delete_product_image($id = '')
     {
         $image_path = $this->model_products->getProductImagePath($id);
-        // prevent to delete DEFAULT_PRODUCT_IMAGE on file system
-        if (file_exists($image_path) && $image_path == DEFAULT_PRODUCT_IMAGE){
+        // prevent to delete DEFAULT_IMAGE on file system
+        if (file_exists($image_path) && $image_path == DEFAULT_IMAGE){
             return true;
         }
 

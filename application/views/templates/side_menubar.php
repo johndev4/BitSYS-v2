@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a class="brand-link" role="button">
-    <img src="<?= base_url('assets/images/webapp_icon/BitSYSLogo.png');?>" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <img src="<?= base_url(BITSYS_LOGO);?>" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">BitSYS</span>
   </a>
 

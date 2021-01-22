@@ -83,3 +83,11 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+
+// System constant variables //
+define('NO_FILE_TO_UPLOAD', '<p>You did not select a file to upload.</p>'); // no file to upload
+define('DEFAULT_IMAGE', 'assets/images/webapp_image/default_image.jpg'); // default image
+define('BITSYS_LOGO', 'assets/images/webapp_image/BitSYS_logo.png'); // BitSYS logo
+define('FILE_SIZE_EXCEEDS', '<p>The file you are attempting to upload is larger than the permitted size.</p>'); // file size exceeds to maximum size

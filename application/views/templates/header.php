@@ -8,7 +8,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Webapp Icon -->
-    <link rel="icon" href="<?= base_url('assets/images/webapp_icon/BitSYSLogo.png');?>" type="image/png" sizes="16x16">
+    <link rel="icon" href="<?= base_url(BITSYS_LOGO);?>" type="image/png" sizes="16x16">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
