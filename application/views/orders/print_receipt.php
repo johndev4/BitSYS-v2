@@ -35,8 +35,12 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 			<?php if ($order_data['customer_name'] != "") : ?>
 				<div id="address">
 					<b>Name:</b> <?= $order_data['customer_name']; ?> <br>
-					<b>Address:</b> <?= $order_data['customer_address']; ?> <br>
-					<b>Phone:</b> <?= $order_data['customer_phone']; ?>
+					<?php if ($order_data['customer_address'] != "") : ?>
+						<b>Address:</b> <?= $order_data['customer_address']; ?> <br>
+					<?php endif; ?>
+					<?php if ($order_data['customer_phone'] != "") : ?>
+						<b>Phone:</b> <?= $order_data['customer_phone']; ?>
+					<?php endif; ?>
 				</div>
 			<?php endif; ?>
 
