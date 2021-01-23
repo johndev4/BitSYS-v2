@@ -42,13 +42,17 @@
               </div>
 
               <div class="form-group">
-                <label for="product_image">Update Image</label>
-                <div class="kv-avatar">
-                  <div class="file-loading">
-                    <input id="product_image" name="product_image" type="file">
+                <label for="product_image">Image</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="product_image" name="product_image">
+                    <label class="custom-file-label" for="product_image">Choose file</label>
                   </div>
-                  <small>Max size: 2MB</small>
+                  <div class="input-group-append">
+                    <span class="input-group-text">Upload</span>
+                  </div>
                 </div>
+                <small>Max size: 2MB</small>
               </div>
 
               <div class="form-group">
@@ -184,6 +188,9 @@
     $("#mainProductNav > a").addClass('active');
     $("#mainProductNav").addClass('menu-open');
     $("#manageProductNav > a").addClass('active');
+
+    // initialize bs-custom-file-input
+    bsCustomFileInput.init();
 
   });
 </script>
