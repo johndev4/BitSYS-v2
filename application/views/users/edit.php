@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0"><?= $page_title?></h1>
+          <h1 class="m-0"><?= $page_title ?></h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -38,12 +38,10 @@
 
               <div class="form-group">
                 <label for="groups">Groups</label>
-                <select class="form-control" id="groups" name="groups">
+                <select class="form-control  select2bs4" id="groups" name="groups">
                   <option value="">Select Groups</option>
                   <?php foreach ($group_data as $k => $v) : ?>
-                    <option value="<?php echo $v['id'] ?>" <?php if ($user_group['id'] == $v['id']) {
-                                                              echo 'selected';
-                                                            } ?>><?php echo $v['group_name'] ?></option>
+                    <option value="<?php echo $v['id'] ?>" <?php if ($user_group['id'] == $v['id']) {echo 'selected';} ?>><?php echo $v['group_name'] ?></option>
                   <?php endforeach ?>
                 </select>
               </div>
@@ -107,7 +105,7 @@
                 <label for="cpassword">Confirm password</label>
                 <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" autocomplete="off">
               </div>
-              
+
             </div>
             <!-- /.card-body -->
 
@@ -115,7 +113,7 @@
               <button type="submit" class="btn btn-primary">Save Changes</button>
               <a href="<?php echo base_url('users/') ?>" class="btn btn-warning">Back</a>
             </div>
-            
+
           </form>
         </div>
         <!-- /.card -->

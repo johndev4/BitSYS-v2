@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bill_no` varchar(255) NOT NULL,
   `customer_name` varchar(255) DEFAULT NULL,
-  `customer_address` varchar(255) DEFAULT NULL,
+  `customer_address` TEXT DEFAULT NULL,
   `customer_phone` varchar(255) DEFAULT NULL,
   `date_time` varchar(255) NOT NULL,
   `gross_amount` varchar(255) NOT NULL,
