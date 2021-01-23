@@ -16,11 +16,10 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 
 <head>
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-
 	<title> <?= $order_data['bill_no'] . '_order_invoice - ' . $order_date; ?> </title>
 
-	<link rel='stylesheet' type='text/css' href="<?= base_url('assets/invoice/css/style.css'); ?>" />
-	<link rel='stylesheet' type='text/css' href="<?= base_url('assets/invoice/css/print.css'); ?>" media="print" />
+	<link rel='stylesheet' type='text/css' href="<?= base_url('assets/Invoice/dist/css/style.css'); ?>" />
+	<link rel='stylesheet' type='text/css' href="<?= base_url('assets/Invoice/dist/css/print.css'); ?>" media="print" />
 	<script type='text/javascript' src="<?= base_url('assets/plugins/jquery/jquery.min.js'); ?>"></script>
 
 </head>
@@ -159,7 +158,7 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 		</div>
 
 	</div>
-	
+
 	<script>
 		window.onafterprint = window.close;
 	</script>

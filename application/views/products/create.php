@@ -165,27 +165,5 @@
     $("#mainProductNav").addClass('menu-open');
     $("#addProductNav > a").addClass('active');
 
-    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
-      'onclick="alert(\'Call your custom code here.\')">' +
-      '<i class="glyphicon glyphicon-tag"></i>' +
-      '</button>';
-    // $("#product_image").fileinput({
-    //   overwriteInitial: true,
-    //   maxFileSize: 1500,
-    //   showClose: false,
-    //   showCaption: false,
-    //   browseLabel: '',
-    //   removeLabel: '',
-    //   browseIcon: '<i class="fas fa-folder"></i>',
-    //   removeIcon: '<i class="fas fa-times"></i>',
-    //   removeTitle: 'Cancel or reset changes',
-    //   elErrorContainer: '#kv-avatar-errors-1',
-    //   msgErrorClass: 'alert alert-block alert-danger',
-    //   layoutTemplates: {
-    //     main2: '{preview} ' /* + btnCust */ + ' {remove} {browse}'
-    //   },
-    //   allowedFileExtensions: ["jpg", "png", "gif"]
-    // });
-
   });
 </script>

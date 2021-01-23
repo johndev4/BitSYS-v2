@@ -48,7 +48,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Sales Graph</h3>
+            <h3 class="card-title">Sales</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -130,13 +130,13 @@
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       datasets: [{
         label: 'Monthly Sales Rating',
-        backgroundColor: 'rgba(60,141,188,0.9)',
-        borderColor: 'rgba(60,141,188,0.8)',
+        backgroundColor: 'rgba(210, 214, 222, 1)',
+        borderColor: 'rgba(210, 214, 222, 1)',
         pointRadius: false,
-        pointColor: '#3b8bba',
-        pointStrokeColor: 'rgba(60,141,188,1)',
-        pointHighlightFill: '#ffffff',
-        pointHighlightStroke: 'rgba(60,141,188,1)',
+        pointColor: 'rgba(210, 214, 222, 1)',
+        pointStrokeColor: '#c1c7d1',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgba(220,220,220,1)',
         data: report_data
       }]
     }
@@ -147,7 +147,7 @@
     var barChartCanvas = $('#barChart').get(0).getContext('2d')
     var barChartData = areaChartData
     var temp0 = areaChartData.datasets[0]
-    var temp1 = areaChartData.datasets[1]
+    barChartData.datasets[0] = temp0
 
     var barChartOptions = {
       responsive: true,

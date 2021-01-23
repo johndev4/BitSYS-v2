@@ -54,7 +54,9 @@
 								<div class="form-group">
 									<label for="customer_address" class="col-sm-6 control-label" style="text-align:left;">Customer Address</label>
 									<div class="col-sm-12">
-										<input type="text" class="form-control" id="customer_address" name="customer_address" placeholder="Enter Customer Address" value="<?php echo $order_data['order']['customer_address'] ?>" autocomplete="off">
+										<textarea type="text" class="form-control" id="customer_address" name="customer_address" placeholder="Enter Customer Address" autocomplete="off">
+											<?php echo $order_data['order']['customer_address'] ?>
+										</textarea>
 									</div>
 								</div>
 
@@ -203,6 +205,18 @@
 		$("#mainOrdersNav").addClass('menu-open');
 		$("#manageOrdersNav > a").addClass('active');
 
+		$("#customer_address").wysihtml5({
+			toolbar: {
+				"font-styles": false,
+				"emphasis": false,
+				"lists": false,
+				"html": false,
+				"link": false,
+				"image": false,
+				"color": false,
+				"blockquote": false
+			}
+		});
 
 		// Add new row in the table 
 		$("#add_row").unbind('click').bind('click', function() {

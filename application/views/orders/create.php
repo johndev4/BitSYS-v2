@@ -42,32 +42,32 @@
                 <label for="" class="col-sm-12 control-label text-right">Time: <?php echo date('h:i a') ?></label>
               </div>
 
-                <div class="col-md-6 col-xs-12 float float-left">
+              <div class="col-md-6 col-xs-12 float float-left">
 
-                  <div class="form-group">
-                    <label for="customer_name" class="col-sm-6 control-label" style="text-align:left;">Customer Name</label>
-                    <div class="col-sm-12">
-                      <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Enter Customer Name" autocomplete="off" />
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="customer_address" class="col-sm-6 control-label" style="text-align:left;">Customer Address</label>
-                    <div class="col-sm-12">
-                      <input type="text" class="form-control" id="customer_address" name="customer_address" placeholder="Enter Customer Address" autocomplete="off">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="customer_phone" class="col-sm-6 control-label" style="text-align:left;">Customer Phone</label>
-                    <div class="col-sm-12">
-                      <input type="text" class="form-control" id="customer_phone" name="customer_phone" placeholder="Enter Customer Phone" autocomplete="off">
-                    </div>
+                <div class="form-group">
+                  <label for="customer_name" class="col-sm-6 control-label" style="text-align:left;">Customer Name</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Enter Customer Name" autocomplete="off" />
                   </div>
                 </div>
 
+                <div class="form-group">
+                  <label for="customer_address" class="col-sm-6 control-label" style="text-align:left;">Customer Address</label>
+                  <div class="col-sm-12">
+                    <textarea type="text" class="form-control" id="customer_address" name="customer_address" placeholder="Enter Customer Address" autocomplete="off"></textarea>
+                  </div>
+                </div>
 
-              <br/> <br/>
+                <div class="form-group">
+                  <label for="customer_phone" class="col-sm-6 control-label" style="text-align:left;">Customer Phone</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="customer_phone" name="customer_phone" placeholder="Enter Customer Phone" autocomplete="off">
+                  </div>
+                </div>
+              </div>
+
+
+              <br /> <br />
               <table class="table table-bordered table-responsive" id="product_info_table">
                 <thead>
                   <tr>
@@ -102,62 +102,62 @@
                   </tr>
                 </tbody>
               </table>
-              <br/> <br/>
+              <br /> <br />
 
-              
-                <div class="col-md-6 col-xs-12 float float-right">
 
-                  <div class="form-group">
-                    <label for="gross_amount" class="col-sm-5">Gross Amount</label>
-                    <div class="col-sm-12">
-                      <input type="number" class="form-control" id="gross_amount" name="gross_amount" disabled autocomplete="off">
-                      <input type="hidden" class="form-control" id="gross_amount_value" name="gross_amount_value" autocomplete="off">
-                    </div>
-                  </div>
-                  <?php if ($is_service_enabled == true) : ?>
-                    <div class="form-group">
-                      <label for="service_charge" class="col-sm-5 control-label">S-Charge <?php echo $company_data['service_charge_value'] ?> %</label>
-                      <div class="col-sm-12">
-                        <input type="number" class="form-control" id="service_charge" name="service_charge" disabled autocomplete="off">
-                        <input type="hidden" class="form-control" id="service_charge_value" name="service_charge_value" autocomplete="off">
-                      </div>
-                    </div>
-                  <?php endif; ?>
-                  <?php if ($is_vat_enabled == true) : ?>
-                    <div class="form-group">
-                      <label for="vat_charge" class="col-sm-5 control-label">Vat <?php echo $company_data['vat_charge_value'] ?> %</label>
-                      <div class="col-sm-12">
-                        <input type="number" class="form-control" id="vat_charge" name="vat_charge" disabled autocomplete="off">
-                        <input type="hidden" class="form-control" id="vat_charge_value" name="vat_charge_value" autocomplete="off">
-                      </div>
-                    </div>
-                  <?php endif; ?>
-                  <div class="form-group">
-                    <label for="discount" class="col-sm-5 control-label">Discount</label>
-                    <div class="col-sm-12">
-                      <input type="number" class="form-control" id="discount" name="discount" placeholder="Discount" oninput="subAmount()" autocomplete="off">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="net_amount" class="col-sm-5 control-label">Net Amount</label>
-                    <div class="col-sm-12">
-                      <input type="number" class="form-control" id="net_amount" name="net_amount" disabled autocomplete="off">
-                      <input type="hidden" class="form-control" id="net_amount_value" name="net_amount_value" autocomplete="off">
-                    </div>
-                  </div>
+              <div class="col-md-6 col-xs-12 float float-right">
 
-                  <div class="form-group">
-                    <label for="paid_status" class="col-sm-5 control-label">Paid Status</label>
-                    <div class="col-sm-12">
-                      <select type="text" class="form-control" id="paid_status" name="paid_status">
-                        <option value="2">Unpaid</option>
-                        <option value="1">Paid</option>
-                      </select>
-                    </div>
+                <div class="form-group">
+                  <label for="gross_amount" class="col-sm-5">Gross Amount</label>
+                  <div class="col-sm-12">
+                    <input type="number" class="form-control" id="gross_amount" name="gross_amount" disabled autocomplete="off">
+                    <input type="hidden" class="form-control" id="gross_amount_value" name="gross_amount_value" autocomplete="off">
                   </div>
-
                 </div>
-              
+                <?php if ($is_service_enabled == true) : ?>
+                  <div class="form-group">
+                    <label for="service_charge" class="col-sm-5 control-label">S-Charge <?php echo $company_data['service_charge_value'] ?> %</label>
+                    <div class="col-sm-12">
+                      <input type="number" class="form-control" id="service_charge" name="service_charge" disabled autocomplete="off">
+                      <input type="hidden" class="form-control" id="service_charge_value" name="service_charge_value" autocomplete="off">
+                    </div>
+                  </div>
+                <?php endif; ?>
+                <?php if ($is_vat_enabled == true) : ?>
+                  <div class="form-group">
+                    <label for="vat_charge" class="col-sm-5 control-label">Vat <?php echo $company_data['vat_charge_value'] ?> %</label>
+                    <div class="col-sm-12">
+                      <input type="number" class="form-control" id="vat_charge" name="vat_charge" disabled autocomplete="off">
+                      <input type="hidden" class="form-control" id="vat_charge_value" name="vat_charge_value" autocomplete="off">
+                    </div>
+                  </div>
+                <?php endif; ?>
+                <div class="form-group">
+                  <label for="discount" class="col-sm-5 control-label">Discount</label>
+                  <div class="col-sm-12">
+                    <input type="number" class="form-control" id="discount" name="discount" placeholder="Discount" oninput="subAmount()" autocomplete="off">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="net_amount" class="col-sm-5 control-label">Net Amount</label>
+                  <div class="col-sm-12">
+                    <input type="number" class="form-control" id="net_amount" name="net_amount" disabled autocomplete="off">
+                    <input type="hidden" class="form-control" id="net_amount_value" name="net_amount_value" autocomplete="off">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="paid_status" class="col-sm-5 control-label">Paid Status</label>
+                  <div class="col-sm-12">
+                    <select type="text" class="form-control" id="paid_status" name="paid_status">
+                      <option value="2">Unpaid</option>
+                      <option value="1">Paid</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+
             </div>
             <!-- /.card-body -->
 
@@ -192,10 +192,18 @@
     $("#mainOrdersNav").addClass('menu-open');
     $("#addOrderNav > a").addClass('active');
 
-    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
-      'onclick="alert(\'Call your custom code here.\')">' +
-      '<i class="glyphicon glyphicon-tag"></i>' +
-      '</button>';
+    $("#customer_address").wysihtml5({
+      toolbar: {
+        "font-styles": false,
+        "emphasis": false,
+        "lists": false,
+        "html": false,
+        "link": false,
+        "image": false,
+        "color": false,
+        "blockquote": false
+      }
+    });
 
     // Add new row in the table 
     $("#add_row").unbind('click').bind('click', function() {
