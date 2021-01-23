@@ -37,7 +37,6 @@
                 <?php echo validation_errors(); ?></span>
 
               <div class="form-group">
-                <label>Image Preview: </label>
                 <img src="<?= base_url() . $product_data['image'] ?>" width="150" height="150" class="img-circle" id="preview_image">
                 <button type="button" class="btn btn-default" id="remove_image"><i class="fas fa-times"></i></button>
               </div>
@@ -183,7 +182,27 @@
       if ($("#preview_image").attr('src') != "<?= base_url(DEFAULT_IMAGE); ?>") {
         $("#preview_image").attr('src', '<?= base_url(DEFAULT_IMAGE); ?>');
         $("form[action='<?php base_url('products/update') ?>']").attr('action', '<?php base_url('products/update') ?>?remove_image=true');
+        $("#product_image").val('');
+        $('.custom-file-label').html('Choose file');
       }
     });
+
+    // sync image on preview
+    $("#product_image").on('input', function() {
+      var file = $("#product_image").get(0).files[0];
+
+      if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function() {
+          $("#preview_image").attr("src", reader.result);
+        }
+
+        reader.readAsDataURL(file);
+      } else {
+        $("#preview_image").attr("src", '<?= base_url(DEFAULT_IMAGE); ?>');
+      }
+    });
+
   });
 </script>

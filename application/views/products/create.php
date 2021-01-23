@@ -37,6 +37,11 @@
                 <?php echo validation_errors(); ?></span>
 
               <div class="form-group">
+                <img src="<?= base_url(DEFAULT_IMAGE) ?>" width="150" height="150" class="img-circle" id="preview_image">
+                <button type="button" class="btn btn-default" id="remove_image"><i class="fas fa-times"></i></button>
+              </div>
+
+              <div class="form-group">
                 <label for="product_image">Image</label>
                 <div class="input-group">
                   <div class="custom-file">
@@ -156,6 +161,32 @@
 
     // initialize bs-custom-file-input
     bsCustomFileInput.init();
+
+    // remove product image
+    $("#remove_image").click(function() {
+      if ($("#preview_image").attr('src') != "<?= base_url(DEFAULT_IMAGE); ?>") {
+        $("#preview_image").attr('src', '<?= base_url(DEFAULT_IMAGE); ?>');
+        $("#product_image").val('');
+        $('.custom-file-label').html('Choose file');
+      }
+    });
+
+    // sync image on preview
+    $("#product_image").on('input', function() {
+      var file = $("#product_image").get(0).files[0];
+
+      if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function() {
+          $("#preview_image").attr("src", reader.result);
+        }
+
+        reader.readAsDataURL(file);
+      } else {
+        $("#preview_image").attr("src", '<?= base_url(DEFAULT_IMAGE); ?>');
+      }
+    });
 
   });
 </script>
