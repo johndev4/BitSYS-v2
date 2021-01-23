@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0"><?= $page_title?></h1>
+          <h1 class="m-0"><?= $page_title ?></h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -28,7 +28,7 @@
         <div id="messages"></div>
 
         <?php if (in_array('createBrand', $user_permission)) : ?>
-          <button class="btn btn-primary" data-toggle="modal" data-target="#addBrandModal">Add Brand</button>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add Brand</button>
           <br /> <br />
         <?php endif; ?>
 
@@ -54,7 +54,7 @@
           <!-- /.card-body -->
         </div>
         <!-- /.card -->
-        
+
       </div>
       <!-- col-md-12 -->
     </div>
@@ -68,7 +68,7 @@
 
 <?php if (in_array('createBrand', $user_permission)) : ?>
   <!-- create brand modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="addBrandModal">
+  <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -76,7 +76,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
 
-        <form role="form" action="<?php echo base_url('brands/create') ?>" method="post" id="createBrandForm">
+        <form role="form" action="<?php echo base_url('brands/create') ?>" method="post" id="createForm">
 
           <div class="modal-body">
 
@@ -108,7 +108,7 @@
 
 <?php if (in_array('updateBrand', $user_permission)) : ?>
   <!-- edit brand modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="editBrandModal">
+  <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -116,7 +116,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
 
-        <form role="form" action="<?php echo base_url('brands/update') ?>" method="post" id="updateBrandForm">
+        <form role="form" action="<?php echo base_url('brands/update') ?>" method="post" id="updateForm">
 
           <div class="modal-body">
             <div id="messages"></div>
@@ -149,21 +149,21 @@
 
 <?php if (in_array('deleteBrand', $user_permission)) : ?>
   <!-- remove brand modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="removeBrandModal">
+  <div class="modal fade" tabindex="-1" role="dialog" id="removeModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
 
         <div class="modal-header">
           <h4 class="modal-title">Remove Brand</h4>
         </div>
-        <form role="form" action="<?php echo base_url('brands/remove') ?>" method="post" id="removeBrandForm">
+        <form role="form" action="<?php echo base_url('brands/remove') ?>" method="post" id="removeForm">
           <div class="modal-body">
             <p>Do you really want to remove?</p>
             <button type="submit" class="btn btn-primary">Confirm</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           </div>
         </form>
-        
+
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
@@ -195,8 +195,8 @@
       "dom": 'Bflrtip'
     });
 
-    // submit the create from 
-    $("#createBrandForm").unbind('submit').on('submit', function() {
+    // submit the create form 
+    $("#createForm").unbind('submit').on('submit', function() {
       var form = $(this);
 
       // remove the text-danger
@@ -219,11 +219,12 @@
 
 
             // hide the modal
-            $("#addBrandModal").modal('hide');
-
+            $("#addModal").modal('hide');
+            // scroll to top
+            $(window).scrollTop(0);
             // reset the form
-            $("#createBrandForm")[0].reset();
-            $("#createBrandForm .form-group").removeClass('has-error').removeClass('has-success');
+            $("#createForm")[0].reset();
+            $("#createForm .form-group").removeClass('has-error').removeClass('has-success');
 
           } else {
 
@@ -244,6 +245,14 @@
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
                 '<strong> <i class="fas fa-times-circle"></i> </strong>' + response.messages +
                 '</div>');
+
+              // hide the modal
+              $("#addModal").modal('hide');
+              // scroll to top
+              $(window).scrollTop(0);
+              // reset the form
+              $("#createForm")[0].reset();
+              $("#createForm .form-group").removeClass('has-error').removeClass('has-success');
             }
           }
         }
@@ -255,7 +264,7 @@
 
   });
 
-  function editBrand(id) {
+  function editFunc(id) {
     $.ajax({
       url: 'fetchBrandDataById/' + id,
       type: 'post',
@@ -265,8 +274,8 @@
         $("#edit_brand_name").val(response.name);
         $("#edit_active").val(response.active);
 
-        // submit the edit from 
-        $("#updateBrandForm").unbind('submit').bind('submit', function() {
+        // submit the edit form 
+        $("#updateForm").unbind('submit').bind('submit', function() {
           var form = $(this);
 
           // remove the text-danger
@@ -289,9 +298,11 @@
 
 
                 // hide the modal
-                $("#editBrandModal").modal('hide');
+                $("#editModal").modal('hide');
+                // scroll to top
+                $(window).scrollTop(0);
                 // reset the form 
-                $("#updateBrandForm .form-group").removeClass('has-error').removeClass('has-success');
+                $("#updateForm .form-group").removeClass('has-error').removeClass('has-success');
 
               } else {
 
@@ -312,6 +323,13 @@
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
                     '<strong> <i class="fas fa-times-circle"></i> </strong>' + response.messages +
                     '</div>');
+
+                  // hide the modal
+                  $("#editModal").modal('hide');
+                  // scroll to top
+                  $(window).scrollTop(0);
+                  // reset the form 
+                  $("#updateForm .form-group").removeClass('has-error').removeClass('has-success');
                 }
               }
             }
@@ -324,9 +342,9 @@
     });
   }
 
-  function removeBrand(id) {
+  function removeFunc(id) {
     if (id) {
-      $("#removeBrandForm").on('submit', function() {
+      $("#removeForm").on('submit', function() {
 
         var form = $(this);
 
@@ -351,7 +369,9 @@
                 '</div>');
 
               // hide the modal
-              $("#removeBrandModal").modal('hide');
+              $("#removeModal").modal('hide');
+              // scroll to top
+              $(window).scrollTop(0);
 
             } else {
 
@@ -359,6 +379,11 @@
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
                 '<strong> <i class="fas fa-times-circle"></i> </strong>' + response.messages +
                 '</div>');
+
+              // hide the modal
+              $("#removeModal").modal('hide');
+              // scroll to top
+              $(window).scrollTop(0);
             }
           }
         });

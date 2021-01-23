@@ -87,11 +87,11 @@
   <div class="modal fade" tabindex="-1" role="dialog" id="removeModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        
-      <div class="modal-header">
+
+        <div class="modal-header">
           <h4 class="modal-title">Remove Order</h4>
         </div>
-        <form role="form" action="<?php echo base_url('brands/remove') ?>" method="post" id="removeBrandForm">
+        <form role="form" action="<?php echo base_url('products/remove') ?>" method="post" id="removeForm">
           <div class="modal-body">
             <p>Do you really want to remove?</p>
             <button type="submit" class="btn btn-primary">Confirm</button>
@@ -164,6 +164,8 @@
 
               // hide the modal
               $("#removeModal").modal('hide');
+              // scroll to top
+              $(window).scrollTop(0);
 
             } else {
 
@@ -174,6 +176,8 @@
 
               // hide the modal
               $("#removeModal").modal('hide');
+              // scroll to top
+              $(window).scrollTop(0);
             }
           }
         });

@@ -155,7 +155,7 @@
         <div class="modal-header">
           <h4 class="modal-title">Remove Category</h4>
         </div>
-        <form role="form" action="<?php echo base_url('brands/remove') ?>" method="post" id="removeBrandForm">
+        <form role="form" action="<?php echo base_url('category/remove') ?>" method="post" id="removeForm">
           <div class="modal-body">
             <p>Do you really want to remove?</p>
             <button type="submit" class="btn btn-primary">Confirm</button>
@@ -192,7 +192,7 @@
       "dom": 'Bflrtip'
     });
 
-    // submit the create from 
+    // submit the create form 
     $("#createForm").unbind('submit').on('submit', function() {
       var form = $(this);
 
@@ -217,7 +217,8 @@
 
             // hide the modal
             $("#addModal").modal('hide');
-
+            // scroll to top
+            $(window).scrollTop(0);
             // reset the form
             $("#createForm")[0].reset();
             $("#createForm .form-group").removeClass('has-error').removeClass('has-success');
@@ -241,6 +242,14 @@
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
                 '<strong> <i class="fas fa-times-circle"></i> </strong>' + response.messages +
                 '</div>');
+
+              // hide the modal
+              $("#addModal").modal('hide');
+              // scroll to top
+              $(window).scrollTop(0);
+              // reset the form
+              $("#createForm")[0].reset();
+              $("#createForm .form-group").removeClass('has-error').removeClass('has-success');
             }
           }
         }
@@ -262,7 +271,7 @@
         $("#edit_category_name").val(response.name);
         $("#edit_active").val(response.active);
 
-        // submit the edit from 
+        // submit the edit form 
         $("#updateForm").unbind('submit').bind('submit', function() {
           var form = $(this);
 
@@ -287,6 +296,8 @@
 
                 // hide the modal
                 $("#editModal").modal('hide');
+                // scroll to top
+                $(window).scrollTop(0);
                 // reset the form 
                 $("#updateForm .form-group").removeClass('has-error').removeClass('has-success');
 
@@ -309,6 +320,13 @@
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
                     '<strong> <i class="fas fa-times-circle"></i> </strong>' + response.messages +
                     '</div>');
+
+                  // hide the modal
+                  $("#editModal").modal('hide');
+                  // scroll to top
+                  $(window).scrollTop(0);
+                  // reset the form 
+                  $("#updateForm .form-group").removeClass('has-error').removeClass('has-success');
                 }
               }
             }
@@ -350,6 +368,8 @@
 
               // hide the modal
               $("#removeModal").modal('hide');
+              // scroll to top
+              $(window).scrollTop(0);
 
             } else {
 
@@ -360,6 +380,8 @@
 
               // hide the modal
               $("#removeModal").modal('hide');
+              // scroll to top
+              $(window).scrollTop(0);
             }
           }
         });

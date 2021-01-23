@@ -148,25 +148,21 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<!-- remove brand modal -->
+<!-- remove attribute modal -->
 <div class="modal fade" tabindex="-1" role="dialog" id="removeModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
       <div class="modal-header">
         <h4 class="modal-title">Remove Attribute</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
-
       <form role="form" action="<?php echo base_url('attributes/remove') ?>" method="post" id="removeForm">
         <div class="modal-body">
           <p>Do you really want to remove?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Confirm</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         </div>
       </form>
-
 
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -201,7 +197,7 @@
       "dom": 'Bflrtip'
     });
 
-    // submit the create from 
+    // submit the create form 
     $("#createForm").unbind('submit').on('submit', function() {
       var form = $(this);
 
@@ -226,7 +222,8 @@
 
             // hide the modal
             $("#addModal").modal('hide');
-
+            // scroll to top
+            $(window).scrollTop(0);
             // reset the form
             $("#createForm")[0].reset();
             $("#createForm .form-group").removeClass('has-error').removeClass('has-success');
@@ -250,6 +247,14 @@
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
                 '<strong> <i class="fas fa-times-circle"></i> </strong>' + response.messages +
                 '</div>');
+
+              // hide the modal
+              $("#addModal").modal('hide');
+              // scroll to top
+              $(window).scrollTop(0);
+              // reset the form
+              $("#createForm")[0].reset();
+              $("#createForm .form-group").removeClass('has-error').removeClass('has-success');
             }
           }
         }
@@ -271,7 +276,7 @@
         $("#edit_attribute_name").val(response.name);
         $("#edit_active").val(response.active);
 
-        // submit the edit from 
+        // submit the edit form 
         $("#updateForm").unbind('submit').bind('submit', function() {
           var form = $(this);
 
@@ -296,6 +301,8 @@
 
                 // hide the modal
                 $("#editModal").modal('hide');
+                // scroll to top
+                $(window).scrollTop(0);
                 // reset the form 
                 $("#updateForm .form-group").removeClass('has-error').removeClass('has-success');
 
@@ -318,6 +325,13 @@
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
                     '<strong> <i class="fas fa-times-circle"></i> </strong>' + response.messages +
                     '</div>');
+
+                  // hide the modal
+                  $("#editModal").modal('hide');
+                  // scroll to top
+                  $(window).scrollTop(0);
+                  // reset the form 
+                  $("#updateForm .form-group").removeClass('has-error').removeClass('has-success');
                 }
               }
             }
@@ -359,6 +373,8 @@
 
               // hide the modal
               $("#removeModal").modal('hide');
+              // scroll to top
+              $(window).scrollTop(0);
 
             } else {
 
@@ -369,6 +385,8 @@
 
               // hide the modal
               $("#removeModal").modal('hide');
+              // scroll to top
+              $(window).scrollTop(0);
             }
           }
         });
