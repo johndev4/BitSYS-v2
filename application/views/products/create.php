@@ -72,9 +72,7 @@
 
               <div class="form-group">
                 <label for="description">Description</label>
-                <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter 
-                  description" autocomplete="off">
-                  </textarea>
+                <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter description" autocomplete="off"></textarea>
               </div>
 
               <?php if ($attributes) : ?>
@@ -151,18 +149,6 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $(".select_group").select2();
-    $("#description").wysihtml5({
-      toolbar: {
-        "font-styles": false,
-        "emphasis": false,
-        "lists": false,
-        "html": false,
-        "link": false,
-        "image": false,
-        "color": false,
-        "blockquote": false
-      }
-    });
 
     $("#mainProductNav > a").addClass('active');
     $("#mainProductNav").addClass('menu-open');

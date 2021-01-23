@@ -38,7 +38,9 @@
 
               <div class="form-group">
                 <label>Image Preview: </label>
-                <img src="<?php echo base_url() . $product_data['image'] ?>" width="150" height="150" class="img-circle">
+                <img src="<?= base_url() . $product_data['image'] ?>" width="150" height="150" class="img-circle" id="preview_image">
+                <button type="button" class="btn btn-default" id="remove_image"><i class="fas fa-times"></i></button>
+                <input type="hidden" name="remove_image" value="false">
               </div>
 
               <div class="form-group">
@@ -77,10 +79,7 @@
 
               <div class="form-group">
                 <label for="description">Description</label>
-                <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter 
-                  description" autocomplete="off">
-                    <?php echo $product_data['description']; ?>
-                  </textarea>
+                <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter description" autocomplete="off"><?php echo $product_data['description']; ?></textarea>
               </div>
 
               <?php $attribute_id = json_decode($product_data['attribute_value_id']); ?>
@@ -172,18 +171,6 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $(".select_group").select2();
-    $("#description").wysihtml5({
-      toolbar: {
-        "font-styles": false,
-        "emphasis": false,
-        "lists": false,
-        "html": false,
-        "link": false,
-        "image": false,
-        "color": false,
-        "blockquote": false
-      }
-    });
 
     $("#mainProductNav > a").addClass('active');
     $("#mainProductNav").addClass('menu-open');
@@ -192,5 +179,12 @@
     // initialize bs-custom-file-input
     bsCustomFileInput.init();
 
+    // remove product image
+    $("#remove_image").click(function() {
+      if ($("#preview_image").attr('src') != "<?= base_url(DEFAULT_IMAGE); ?>") {
+        $("#preview_image").attr('src', '<?= base_url(DEFAULT_IMAGE); ?>');
+        $("input[name='remove_image']").val('true');
+      }
+    });
   });
 </script>

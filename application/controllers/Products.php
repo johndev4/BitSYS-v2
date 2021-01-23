@@ -225,13 +225,19 @@ class Products extends Admin_Controller
 
             if ($_FILES['product_image']['size'] > 0) {
                 $upload_image = $this->upload_image();
-                if ($upload_image == '<p>The file you are attempting to upload is larger than the permitted size.</p>') {
+                if ($upload_image == FILE_SIZE_EXCEEDS) {
                     $this->session->set_flashdata('upload_error', $upload_image);
                     redirect('products/update/' . $product_id, 'refresh');
                 }
-                $delete_image = $this->model_products->delete_product_image($product_id);
+                $delete_image = $this->deleteProductImage($product_id);
                 if ($delete_image == true) {
                     $upload_image = array('image' => $upload_image);
+                    $this->model_products->update($upload_image, $product_id);
+                }
+            } else if ($this->input->post('remove_image') == 'true') {
+                $delete_image = $this->deleteProductImage($product_id);
+                if ($delete_image == true) {
+                    $upload_image = array('image' => DEFAULT_IMAGE);
                     $this->model_products->update($upload_image, $product_id);
                 }
             }
@@ -288,7 +294,7 @@ class Products extends Admin_Controller
                 $response['success'] = false;
                 $response['messages'] = "Product exists in the orders";
             } else {
-                $delete_image = $this->delete_product_image($product_id);
+                $delete_image = $this->deleteProductImage($product_id);
                 if ($delete_image == true) {
                     $delete = $this->model_products->remove($product_id);
                 } else {
@@ -315,11 +321,11 @@ class Products extends Admin_Controller
     * Delete the image that is not the DEFAULT_IMAGE on file system
     * and return false if this function failed to delete that image
     */
-    public function delete_product_image($id = '')
+    public function deleteProductImage($id = '')
     {
         $image_path = $this->model_products->getProductImagePath($id);
         // prevent to delete DEFAULT_IMAGE on file system
-        if (file_exists($image_path) && $image_path == DEFAULT_IMAGE){
+        if (file_exists($image_path) && $image_path == DEFAULT_IMAGE) {
             return true;
         }
 

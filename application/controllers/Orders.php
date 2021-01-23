@@ -161,10 +161,7 @@ class Orders extends Admin_Controller
 			redirect('dashboard', 'refresh');
 		}
 
-
-
 		$this->form_validation->set_rules('product[]', 'Product name', 'trim|required');
-
 
 		if ($this->form_validation->run() == TRUE) {
 

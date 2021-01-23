@@ -192,19 +192,6 @@
     $("#mainOrdersNav").addClass('menu-open');
     $("#addOrderNav > a").addClass('active');
 
-    $("#customer_address").wysihtml5({
-      toolbar: {
-        "font-styles": false,
-        "emphasis": false,
-        "lists": false,
-        "html": false,
-        "link": false,
-        "image": false,
-        "color": false,
-        "blockquote": false
-      }
-    });
-
     // Add new row in the table 
     $("#add_row").unbind('click').bind('click', function() {
       var table = $("#product_info_table");

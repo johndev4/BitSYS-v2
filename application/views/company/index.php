@@ -71,9 +71,7 @@
               </div>
               <div class="form-group">
                 <label for="permission">Company Description</label>
-                <textarea class="form-control" id="message" name="message">
-                  <?php echo $company_data['message'] ?>
-                </textarea>
+                <textarea class="form-control" id="message" name="message" placeholder="Enter company description"><?php echo $company_data['message'] ?></textarea>
               </div>
               <div class="form-group">
                 <label for="currency">Currency</label>
@@ -114,17 +112,5 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $("#companyNav > a").addClass('active');
-    $("#message").wysihtml5({
-      toolbar: {
-        "font-styles": false,
-        "emphasis": false,
-        "lists": false,
-        "html": false,
-        "link": false,
-        "image": false,
-        "color": false,
-        "blockquote": false
-      }
-    });
   });
 </script>
