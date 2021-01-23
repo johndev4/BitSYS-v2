@@ -234,7 +234,7 @@ class Products extends Admin_Controller
                     $upload_image = array('image' => $upload_image);
                     $this->model_products->update($upload_image, $product_id);
                 }
-            } else if ($this->input->post('remove_image') == 'true') {
+            } else if ($this->input->get('remove_image') == 'true') {
                 $delete_image = $this->deleteProductImage($product_id);
                 if ($delete_image == true) {
                     $upload_image = array('image' => DEFAULT_IMAGE);

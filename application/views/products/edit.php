@@ -40,7 +40,6 @@
                 <label>Image Preview: </label>
                 <img src="<?= base_url() . $product_data['image'] ?>" width="150" height="150" class="img-circle" id="preview_image">
                 <button type="button" class="btn btn-default" id="remove_image"><i class="fas fa-times"></i></button>
-                <input type="hidden" name="remove_image" value="false">
               </div>
 
               <div class="form-group">
@@ -183,7 +182,7 @@
     $("#remove_image").click(function() {
       if ($("#preview_image").attr('src') != "<?= base_url(DEFAULT_IMAGE); ?>") {
         $("#preview_image").attr('src', '<?= base_url(DEFAULT_IMAGE); ?>');
-        $("input[name='remove_image']").val('true');
+        $("form[action='<?php base_url('products/update') ?>']").attr('action', '<?php base_url('products/update') ?>?remove_image=true');
       }
     });
   });
