@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0"><?= $page_title?></h1>
+          <h1 class="m-0"><?= $page_title ?></h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -151,21 +151,17 @@
   <div class="modal fade" tabindex="-1" role="dialog" id="removeModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-        <h4 class="modal-title">Remove Category</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
 
-        <form role="form" action="<?php echo base_url('category/remove') ?>" method="post" id="removeForm">
+        <div class="modal-header">
+          <h4 class="modal-title">Remove Category</h4>
+        </div>
+        <form role="form" action="<?php echo base_url('brands/remove') ?>" method="post" id="removeBrandForm">
           <div class="modal-body">
             <p>Do you really want to remove?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Confirm</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           </div>
         </form>
-
 
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
