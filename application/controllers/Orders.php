@@ -240,7 +240,10 @@ class Orders extends Admin_Controller
 		}
 
 		if ($id) {
-			$this->data['id'] = $id;
+			$this->data['order_data'] = $this->model_orders->getOrdersData($id);
+			$this->data['orders_items'] = $this->model_orders->getOrdersItemData($id);
+			$this->data['company_info'] = $this->model_company->getCompanyData(1);
+			$this->data['company_currency'] = $this->company_currency();
 			$this->load->view('orders/print_receipt', $this->data);
 		}
 	}

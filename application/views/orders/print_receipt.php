@@ -1,12 +1,4 @@
 <?php
-$this->load->model('model_orders');
-$this->load->model('model_products');
-$this->load->model('model_company');
-
-$order_data = $this->model_orders->getOrdersData($id);
-$orders_items = $this->model_orders->getOrdersItemData($id);
-$company_info = $this->model_company->getCompanyData(1);
-
 $order_date = date('m/d/Y', $order_data['date_time']);
 $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 ?>
@@ -69,7 +61,7 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 				<!-- <tr>
 					<td class="meta-head">Amount Due</td>
 					<td>
-						<div class="due"> <?= $company_info['currency'] . ' ' . $order_data['net_amount']; ?> </div>
+						<div class="due"> <?= $company_currency . ' ' . $order_data['net_amount']; ?> </div>
 					</td>
 				</tr> -->
 			</table>
@@ -96,9 +88,9 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 					<tr class="item-row">
 						<td class="item-name"> <?= $product_data['name']; ?> </td>
 						<td class="description"> <?= $product_data['description']; ?> </td>
-						<td class="cost"> <?= $v['rate']; ?> </td>
+						<td class="cost"> <?= $company_currency . ' ' . $v['rate']; ?> </td>
 						<td class="qty"> <?= $v['qty']; ?> </td>
-						<td> <?= $v['amount']; ?> </td>
+						<td> <?= $company_currency . ' ' . $v['amount']; ?> </td>
 					</tr>
 				<?php
 				}
@@ -108,7 +100,7 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 					<td colspan="2" class="blank"> </td>
 					<td colspan="2" class="total-line">Gross Amount:</td>
 					<td class="total-value">
-						<div> <?= $company_info['currency'] . ' ' . $order_data['gross_amount']; ?> </div>
+						<div> <?= $company_currency . ' ' . $order_data['gross_amount']; ?> </div>
 					</td>
 				</tr>
 				<?php if ($order_data['service_charge'] > 0) : ?>
@@ -116,7 +108,7 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 						<td colspan="2" class="blank"> </td>
 						<td colspan="2" class="total-line">Service Charge ( <?= $order_data['service_charge_rate']; ?> %):</td>
 						<td class="total-value">
-							<div> <?= $company_info['currency'] . ' ' . $order_data['service_charge']; ?> </div>
+							<div> <?= $company_currency . ' ' . $order_data['service_charge']; ?> </div>
 						</td>
 					</tr>
 				<?php endif; ?>
@@ -125,7 +117,7 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 						<td colspan="2" class="blank"> </td>
 						<td colspan="2" class="total-line">Vat Charge ( <?= $order_data['vat_charge_rate']; ?> %):</td>
 						<td class="total-value">
-							<div id=""> <?= $company_info['currency'] . ' ' . $order_data['vat_charge']; ?> </div>
+							<div id=""> <?= $company_currency . ' ' . $order_data['vat_charge']; ?> </div>
 						</td>
 					</tr>
 				<?php endif; ?>
@@ -134,7 +126,7 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 						<td colspan="2" class="blank"> </td>
 						<td colspan="2" class="total-line">Discount:</td>
 						<td class="total-value">
-							<div id=""> <?= $company_info['currency'] . ' ' . $order_data['discount']; ?> </div>
+							<div id=""> <?= $company_currency . ' ' . $order_data['discount']; ?> </div>
 						</td>
 					</tr>
 				<?php endif; ?>
@@ -142,7 +134,7 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 					<td colspan="2" class="blank"> </td>
 					<td colspan="2" class="total-line">Net Amount:</td>
 					<td class="total-value">
-						<div id=""> <?= $company_info['currency'] . ' ' . $order_data['net_amount']; ?> </div>
+						<div id=""> <?= $company_currency . ' ' . $order_data['net_amount']; ?> </div>
 					</td>
 				</tr>
 				<tr>
