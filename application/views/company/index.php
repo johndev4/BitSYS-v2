@@ -26,7 +26,7 @@
         <?php if ($this->session->flashdata('success')) : ?>
           <div class="alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <span><strong> <i class="glyphicon glyphicon-ok-sign"></i> <?php echo $this->session->flashdata('success'); ?>
+            <span><strong> <i class="fas fa-check-circle"></i> <?php echo $this->session->flashdata('success'); ?>
           </div>
         <?php elseif ($this->session->flashdata('error')) : ?>
           <div class="alert alert-danger alert-dismissible" role="alert">
