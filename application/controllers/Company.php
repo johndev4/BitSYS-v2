@@ -95,7 +95,7 @@ class Company extends Admin_Controller
 		$config['max_size'] = '2000';
 
 		$this->load->library('upload', $config);
-		if (!$this->upload->do_upload('userfile')) {
+		if (!$this->upload->do_upload('company_image')) {
 			$error = $this->upload->display_errors();
 			return $error;
 		} else {
