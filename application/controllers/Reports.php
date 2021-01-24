@@ -50,7 +50,7 @@ class Reports extends Admin_Controller
 		}
 		
 		$this->data['selected_year'] = $today_year;
-		$this->data['company_currency'] = $this->company_currency();
+		$this->data['company_currency'] = $this->company_currency_symbol();
 		$this->data['results'] = $final_parking_data;
 
 		$this->render_template('reports/index', $this->data);

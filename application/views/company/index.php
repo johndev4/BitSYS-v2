@@ -40,10 +40,29 @@
             <h3 class="card-title">Manage Company Information</h3>
           </div>
           <!-- /.card-header -->
-          <form role="form" action="<?php base_url('company/update') ?>" method="post">
+          <form role="form" action="<?php base_url('company/index') ?>" method="post">
             <div class="card-body">
 
-              <span class="text-danger"><?php echo validation_errors(); ?></span>
+              <span class="text-danger"><?php echo $this->session->flashdata('upload_error'); ?>
+                <?php echo validation_errors(); ?></span>
+                
+              <div class="form-group">
+                <img src="<?= base_url() . $company_data['image'] ?>" width="150" height="150" class="img-circle" id="preview_image">
+                <button type="button" class="btn btn-default" id="remove_image"><i class="fas fa-times"></i></button>
+              </div>
+              <div class="form-group">
+                <label for="company_image">Image</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="company_image" name="company_image">
+                    <label class="custom-file-label" for="company_image">Choose file</label>
+                  </div>
+                  <div class="input-group-append">
+                    <span class="input-group-text">Upload</span>
+                  </div>
+                </div>
+                <small>Max size: 2MB</small>
+              </div>
 
               <div class="form-group">
                 <label for="company_name">Company Name</label>
@@ -71,7 +90,7 @@
               </div>
               <div class="form-group">
                 <label for="permission">Company Description</label>
-                <textarea class="form-control" id="message" name="message" placeholder="Enter company description"><?php echo $company_data['message'] ?></textarea>
+                <textarea class="form-control" id="company_description" name="company_description" placeholder="Enter company description"><?php echo $company_data['company_description'] ?></textarea>
               </div>
               <div class="form-group">
                 <label for="currency">Currency</label>
@@ -79,7 +98,7 @@
                 <select class="form-control" id="currency" name="currency">
                   <option value="">~~SELECT~~</option>
 
-                  <?php foreach ($currency_symbols as $k => $v) : ?>
+                  <?php foreach ($currency_dataset as $k => $v) : ?>
                     <option value="<?php echo trim($k); ?>" <?php if ($company_data['currency'] == $k) {
                                                               echo "selected";
                                                             } ?>><?php echo $k ?></option>
@@ -112,5 +131,35 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $("#companyNav > a").addClass('active');
+
+    // initialize bs-custom-file-input
+    bsCustomFileInput.init();
+
+    // remove product image
+    $("#remove_image").click(function() {
+      if ($("#preview_image").attr('src') != "<?= base_url(DEFAULT_IMAGE); ?>") {
+        $("#preview_image").attr('src', '<?= base_url(DEFAULT_IMAGE); ?>');
+        $("form[action='<?php base_url('company/index') ?>']").attr('action', '<?php base_url('company/index') ?>?remove_image=true');
+        $("#company_image").val('');
+        $('.custom-file-label').html('Choose file');
+      }
+    });
+
+    // sync image on preview
+    $("#company_image").on('input', function() {
+      var file = $("#company_image").get(0).files[0];
+
+      if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function() {
+          $("#preview_image").attr("src", reader.result);
+        }
+
+        reader.readAsDataURL(file);
+      } else {
+        $("#preview_image").attr("src", '<?= base_url(DEFAULT_IMAGE); ?>');
+      }
+    });
   });
 </script>

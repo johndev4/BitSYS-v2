@@ -55,11 +55,11 @@ class Admin_Controller extends MY_Controller
 		$this->load->view('templates/footer', $data);
 	}
 
-	public function company_currency()
+	public function company_currency_symbol()
 	{
 		$this->load->model('model_company');
 		$company_currency = $this->model_company->getCompanyData(1);
-		$currencies = $this->currency();
+		$currencies = $this->currency_dataset();
 
 		$currency = '';
 		foreach ($currencies as $key => $value) {
@@ -71,7 +71,7 @@ class Admin_Controller extends MY_Controller
 		return $currency;
 	}
 
-	public function currency()
+	public function currency_dataset()
 	{
 		return $currency_symbols = array(
 			'AED' => '&#1583;.&#1573;', // ?

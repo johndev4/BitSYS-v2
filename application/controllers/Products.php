@@ -168,9 +168,6 @@ class Products extends Admin_Controller
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = '2000';
 
-        // $config['max_width']  = '1024';s
-        // $config['max_height']  = '768';
-
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload('product_image')) {
             $error = $this->upload->display_errors();
@@ -257,9 +254,7 @@ class Products extends Admin_Controller
             $attributes_final_data = array();
             foreach ($attribute_data as $k => $v) {
                 $attributes_final_data[$k]['attribute_data'] = $v;
-
                 $value = $this->model_attributes->getAttributeValueData($v['id']);
-
                 $attributes_final_data[$k]['attribute_value'] = $value;
             }
 

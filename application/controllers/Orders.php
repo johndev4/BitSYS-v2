@@ -243,7 +243,7 @@ class Orders extends Admin_Controller
 			$this->data['order_data'] = $this->model_orders->getOrdersData($id);
 			$this->data['orders_items'] = $this->model_orders->getOrdersItemData($id);
 			$this->data['company_info'] = $this->model_company->getCompanyData(1);
-			$this->data['company_currency'] = $this->company_currency();
+			$this->data['company_currency'] = $this->company_currency_symbol();
 			$this->load->view('orders/print_receipt', $this->data);
 		}
 	}
