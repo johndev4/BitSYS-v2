@@ -20,19 +20,7 @@ class Company extends Admin_Controller
     * It also updates the company information into the database if the 
     * validation for each input field is successfully valid
 	*/
-
 	public function index()
-	{
-		if (!in_array('updateCompany', $this->permission)) {
-			redirect('dashboard', 'refresh');
-		}
-
-		$this->data['currency_dataset'] = $this->currency_dataset();
-		$this->data['company_data'] = $this->model_company->getCompanyData(1);
-		$this->render_template('company/index', $this->data);
-	}
-
-	public function update()
 	{
 		if (!in_array('updateCompany', $this->permission)) {
 			redirect('dashboard', 'refresh');
@@ -79,10 +67,10 @@ class Company extends Admin_Controller
 			$update = $this->model_company->update($data, 1);
 			if ($update == true) {
 				$this->session->set_flashdata('success', 'Successfully updated');
-				redirect('company/index', 'refresh');
+				redirect('company/', 'refresh');
 			} else {
 				$this->session->set_flashdata('errors', 'Error occurred!!');
-				redirect('company/index', 'refresh');
+				redirect('company/', 'refresh');
 			}
 		} else {
 			// false case
@@ -125,7 +113,7 @@ class Company extends Admin_Controller
     */
 	public function deleteCompanyImage()
 	{
-		$image_path = $this->model_products->getCompanyImagePath(1);
+		$image_path = $this->model_company->getCompanyImagePath(1);
 		// prevent to delete DEFAULT_IMAGE on file system
 		if (file_exists($image_path) && $image_path == DEFAULT_IMAGE) {
 			return true;

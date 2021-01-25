@@ -28,6 +28,6 @@ class Model_company extends CI_Model
 
 	public function getCompanyImagePath($id)
 	{
-		return $this->db->get_where('products', array('id' => $id))->row_array()['image'];
+		return $this->db->get_where('company', array('id' => $id))->row_array()['image'];
 	}
 }

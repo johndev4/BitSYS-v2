@@ -40,12 +40,12 @@
             <h3 class="card-title">Manage Company Information</h3>
           </div>
           <!-- /.card-header -->
-          <form role="form" action="<?php base_url('company/update') ?>" method="post">
+          <form role="form" action="<?php base_url('company/') ?>" method="post" enctype="multipart/form-data">
             <div class="card-body">
 
               <span class="text-danger"><?php echo $this->session->flashdata('upload_error'); ?>
                 <?php echo validation_errors(); ?></span>
-                
+
               <div class="form-group">
                 <img src="<?= base_url() . $company_data['image'] ?>" width="150" height="150" class="img-circle" id="preview_image">
                 <button type="button" class="btn btn-default" id="remove_image"><i class="fas fa-times"></i></button>
@@ -54,7 +54,7 @@
                 <label for="company_image">Image</label>
                 <div class="input-group">
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="company_image" name="company_image">
+                    <input type="file" class="custom-file-input" id="product_image" name="company_image">
                     <label class="custom-file-label" for="company_image">Choose file</label>
                   </div>
                   <div class="input-group-append">
