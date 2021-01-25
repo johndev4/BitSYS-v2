@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2021 at 11:54 AM
+-- Generation Time: Jan 25, 2021 at 05:33 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `attributes` (
   `name` varchar(255) NOT NULL,
   `active` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `attribute_value` (
   `attribute_parent_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `attribute_id_fk` (`attribute_parent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `brands` (
   `name` varchar(255) NOT NULL,
   `active` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `name` varchar(255) NOT NULL,
   `active` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -88,8 +88,9 @@ CREATE TABLE IF NOT EXISTS `company` (
   `address` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
-  `message` text DEFAULT NULL,
+  `company_description` text DEFAULT NULL,
   `currency` varchar(255) DEFAULT NULL,
+  `image` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -97,8 +98,8 @@ CREATE TABLE IF NOT EXISTS `company` (
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`id`, `company_name`, `service_charge_value`, `vat_charge_value`, `address`, `phone`, `country`, `message`, `currency`) VALUES
-(1, 'BitSYS Enterprise', '0', '0', '', '', '', '', '');
+INSERT INTO `company` (`id`, `company_name`, `service_charge_value`, `vat_charge_value`, `address`, `phone`, `country`, `company_description`, `currency`, `image`) VALUES
+(1, 'BitSYS Enterprise', '0', '0', '', '', 'Philippines', '', 'PHP', 'assets/images/webapp_image/default_image.jpg');
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `group_name` varchar(255) NOT NULL,
   `permission` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `groups`
@@ -130,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bill_no` varchar(255) NOT NULL,
   `customer_name` varchar(255) DEFAULT NULL,
-  `customer_address` TEXT DEFAULT NULL,
+  `customer_address` text DEFAULT NULL,
   `customer_phone` varchar(255) DEFAULT NULL,
   `date_time` varchar(255) NOT NULL,
   `gross_amount` varchar(255) NOT NULL,
@@ -144,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id_fk` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `orders_item` (
   PRIMARY KEY (`id`),
   KEY `order_id_fk` (`order_id`),
   KEY `product_id_fk` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -185,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `availability` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `store_id_fk` (`store_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -198,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `stores` (
   `name` varchar(255) NOT NULL,
   `active` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -218,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -240,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `user_group` (
   PRIMARY KEY (`id`),
   KEY `user_id_fk_` (`user_id`),
   KEY `group_id_fk_` (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user_group`
