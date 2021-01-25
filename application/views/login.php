@@ -27,7 +27,7 @@
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a href="<?php echo base_url('auth'); ?>"><b>BitSYS Login.</b></a>
+			<a role="button"><b>BitSYS Login.</b></a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="card">
