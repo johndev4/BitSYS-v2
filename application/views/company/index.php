@@ -40,7 +40,7 @@
             <h3 class="card-title">Manage Company Information</h3>
           </div>
           <!-- /.card-header -->
-          <form role="form" action="<?php base_url('company/index') ?>" method="post">
+          <form role="form" action="<?php base_url('company/update') ?>" method="post">
             <div class="card-body">
 
               <span class="text-danger"><?php echo $this->session->flashdata('upload_error'); ?>

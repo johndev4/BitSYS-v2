@@ -26,7 +26,7 @@ class Model_groups extends CI_Model
 		return ($create == true) ? true : false;
 	}
 
-	public function edit($data, $id)
+	public function update($data, $id)
 	{
 		$this->db->where('id', $id);
 		$update = $this->db->update('groups', $data);

@@ -31,14 +31,14 @@
           </div>
           <!-- /.card-header -->
 
-          <form role="form" action="<?php base_url('users/create') ?>" method="post">
+          <form role="form" action="<?php base_url('users/update') ?>" method="post">
             <div class="card-body">
 
               <span class="text-danger"><?php echo validation_errors(); ?></span>
 
               <div class="form-group">
                 <label for="groups">Groups</label>
-                <select class="form-control select2bs4" id="groups" name="groups">
+                <select class="form-control" id="groups" name="groups">
                   <option value="">Select Groups</option>
                   <?php foreach ($group_data as $k => $v) : ?>
                     <option value="<?php echo $v['id'] ?>" <?php if ($user_group['id'] == $v['id']) {echo 'selected';} ?>><?php echo $v['group_name'] ?></option>

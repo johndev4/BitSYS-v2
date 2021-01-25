@@ -54,7 +54,7 @@ class Model_users extends CI_Model
 		}
 	}
 
-	public function edit($data = array(), $id = null, $group_id = null)
+	public function update($data = array(), $id = null, $group_id = null)
 	{
 		$this->db->where('id', $id);
 		$update = $this->db->update('users', $data);

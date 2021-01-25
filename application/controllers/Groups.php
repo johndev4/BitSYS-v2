@@ -75,7 +75,7 @@ class Groups extends Admin_Controller
 	* If the validation is successfully then it updates the data into the database 
 	* and it stores the operation message into the session flashdata and display on the manage group page
 	*/
-	public function edit($id = null)
+	public function update($id = null)
 	{
 
 		if(!in_array('updateGroup', $this->permission)) {
@@ -95,7 +95,7 @@ class Groups extends Admin_Controller
 	        		'permission' => $permission
 	        	);
 
-	        	$update = $this->model_groups->edit($data, $id);
+	        	$update = $this->model_groups->update($data, $id);
 	        	if($update == true) {
 	        		$this->session->set_flashdata('success', 'Successfully updated');
 	        		redirect('groups/', 'refresh');

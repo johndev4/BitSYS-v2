@@ -76,7 +76,7 @@
 
                         <td>
                           <?php if (in_array('updateUser', $user_permission)) : ?>
-                            <a href="<?php echo base_url('users/edit/' . $v['user_info']['id']) ?>" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                            <a href="<?php echo base_url('users/update/' . $v['user_info']['id']) ?>" class="btn btn-default"><i class="fa fa-pencil"></i></a>
                           <?php endif; ?>
                           <?php if (in_array('deleteUser', $user_permission)) : ?>
                             <a href="<?php echo base_url('users/delete/' . $v['user_info']['id']) ?>" class="btn btn-default"><i class="fa fa-trash"></i></a>

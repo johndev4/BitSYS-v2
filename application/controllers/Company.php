@@ -27,6 +27,17 @@ class Company extends Admin_Controller
 			redirect('dashboard', 'refresh');
 		}
 
+		$this->data['currency_dataset'] = $this->currency_dataset();
+		$this->data['company_data'] = $this->model_company->getCompanyData(1);
+		$this->render_template('company/index', $this->data);
+	}
+
+	public function update()
+	{
+		if (!in_array('updateCompany', $this->permission)) {
+			redirect('dashboard', 'refresh');
+		}
+
 		$this->form_validation->set_rules('company_name', 'Company Name', 'trim|required');
 		$this->form_validation->set_rules('service_charge_value', 'Charge Amount', 'trim|required');
 		$this->form_validation->set_rules('vat_charge_value', 'Vat Charge', 'trim|required');

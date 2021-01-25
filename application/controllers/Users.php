@@ -93,7 +93,7 @@ class Users extends Admin_Controller
 		}
 	}
 
-	public function edit($id = null)
+	public function update($id = null)
 	{
 		if(!in_array('updateUser', $this->permission)) {
 			redirect('dashboard', 'refresh');
@@ -118,7 +118,7 @@ class Users extends Admin_Controller
 		        		'gender' => $this->input->post('gender'),
 		        	);
 
-		        	$update = $this->model_users->edit($data, $id, $this->input->post('groups'));
+		        	$update = $this->model_users->update($data, $id, $this->input->post('groups'));
 		        	if($update == true) {
 		        		$this->session->set_flashdata('success', 'Successfully updated');
 		        		redirect('users/', 'refresh');
@@ -146,7 +146,7 @@ class Users extends Admin_Controller
 			        		'gender' => $this->input->post('gender'),
 			        	);
 
-			        	$update = $this->model_users->edit($data, $id, $this->input->post('groups'));
+			        	$update = $this->model_users->update($data, $id, $this->input->post('groups'));
 			        	if($update == true) {
 			        		$this->session->set_flashdata('success', 'Successfully updated');
 			        		redirect('users/', 'refresh');
@@ -259,7 +259,7 @@ class Users extends Admin_Controller
 		        		'gender' => $this->input->post('gender'),
 		        	);
 
-		        	$update = $this->model_users->edit($data, $id);
+		        	$update = $this->model_users->update($data, $id);
 		        	if($update == true) {
 		        		$this->session->set_flashdata('success', 'Successfully updated');
 		        		redirect('users/setting/', 'refresh');
@@ -287,7 +287,7 @@ class Users extends Admin_Controller
 			        		'gender' => $this->input->post('gender'),
 			        	);
 
-			        	$update = $this->model_users->edit($data, $id, $this->input->post('groups'));
+			        	$update = $this->model_users->update($data, $id, $this->input->post('groups'));
 			        	if($update == true) {
 			        		$this->session->set_flashdata('success', 'Successfully updated');
 			        		redirect('users/setting/', 'refresh');
