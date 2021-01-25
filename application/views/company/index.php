@@ -54,14 +54,18 @@
                 <label for="company_image">Image</label>
                 <div class="input-group">
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="product_image" name="company_image">
+                    <input type="file" class="custom-file-input" id="company_image" name="company_image">
                     <label class="custom-file-label" for="company_image">Choose file</label>
                   </div>
                   <div class="input-group-append">
                     <span class="input-group-text">Upload</span>
                   </div>
                 </div>
-                <small>Max size: 2MB</small>
+                <small>MAX SIZE: 2MB</small> |
+                <small>MAX WIDTH: 150px</small> |
+                <small>MAX HEIGHT: 150px</small> |
+                <small>RATIO: 1:1</small> |
+                <small>FILETYPE: JPG, PNG</small>
               </div>
 
               <div class="form-group">

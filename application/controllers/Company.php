@@ -47,9 +47,9 @@ class Company extends Admin_Controller
 
 			if ($_FILES['company_image']['size'] > 0) {
 				$upload_image = $this->upload_image();
-				if ($upload_image == FILE_SIZE_EXCEEDS) {
+				if ($upload_image == FILE_SIZE_EXCEEDS || $upload_image == INVALID_IMAGE_DIMESION || $upload_image == INVALID_FILE_TYPE) {
 					$this->session->set_flashdata('upload_error', $upload_image);
-					redirect('company/index', 'refresh');
+					redirect('company/', 'refresh');
 				}
 				$delete_image = $this->deleteCompanyImage();
 				if ($delete_image == true) {
@@ -90,8 +90,11 @@ class Company extends Admin_Controller
 		// assets/images/company_image
 		$config['upload_path'] = 'assets/images/company_image';
 		$config['file_name'] =  uniqid();
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'jpg|png';
 		$config['max_size'] = '2000';
+		$config['maintain_ratio'] = TRUE;
+		$config['max_width']  = '150';
+		$config['max_height']  = '150';
 
 		$this->load->library('upload', $config);
 		if (!$this->upload->do_upload('company_image')) {

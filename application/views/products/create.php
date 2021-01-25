@@ -52,7 +52,11 @@
                     <span class="input-group-text">Upload</span>
                   </div>
                 </div>
-                <small>Max size: 2MB</small>
+                <small>MAX SIZE: 2MB</small> |
+                <small>MAX WIDTH: 150px</small> |
+                <small>MAX HEIGHT: 150px</small> |
+                <small>RATIO: 1:1</small> |
+                <small>FILETYPE: JPG, PNG</small>
               </div>
 
               <div class="form-group">

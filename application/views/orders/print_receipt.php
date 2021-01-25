@@ -10,8 +10,7 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	<title> <?= $order_data['bill_no'] . '_order_invoice - ' . $order_date; ?> </title>
 
-	<link rel='stylesheet' type='text/css' href="<?= base_url('assets/Invoice/dist/css/style.css'); ?>" />
-	<link rel='stylesheet' type='text/css' href="<?= base_url('assets/Invoice/dist/css/print.css'); ?>" media="print" />
+	<link rel='stylesheet' type='text/css' href="<?= base_url('assets/Invoice/dist/css/style.css'); ?>">
 	<script type='text/javascript' src="<?= base_url('assets/plugins/jquery/jquery.min.js'); ?>"></script>
 
 </head>
@@ -23,7 +22,6 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 		<textarea id="header">INVOICE</textarea>
 
 		<div id="identity">
-
 			<?php if ($order_data['customer_name'] != "") : ?>
 				<div id="address">
 					<b>Name:</b> <?= $order_data['customer_name']; ?> <br>
@@ -34,12 +32,18 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 						<b>Phone:</b> <?= $order_data['customer_phone']; ?>
 					<?php endif; ?>
 				</div>
+				<style>
+					#logo {
+						margin-top: 25px;
+					}
+				</style>
 			<?php endif; ?>
 
-			<!-- <div id="logo">
-				<img id="image" src="<?= base_url(BITSYS_LOGO); ?>" alt="logo">
-			</div> -->
-
+			<?php if ($company_info['image'] != DEFAULT_IMAGE) : ?>
+				<div id="logo">
+					<img id="image" src="<?= base_url($company_info['image']); ?>" alt="company logo" width="150">
+				</div>
+			<?php endif; ?>
 		</div>
 
 		<div style="clear:both"></div>

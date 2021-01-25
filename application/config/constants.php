@@ -91,3 +91,5 @@ define('NO_FILE_TO_UPLOAD', '<p>You did not select a file to upload.</p>'); // n
 define('DEFAULT_IMAGE', 'assets/images/webapp_image/default_image.jpg'); // default image
 define('BITSYS_LOGO', 'assets/images/webapp_image/BitSYS_logo.png'); // BitSYS logo
 define('FILE_SIZE_EXCEEDS', '<p>The file you are attempting to upload is larger than the permitted size.</p>'); // file size exceeds to maximum size
+define("INVALID_IMAGE_DIMESION", "<p>The image you are attempting to upload doesn't fit into the allowed dimensions.</p>"); // image dimension is not allowed
+define("INVALID_FILE_TYPE", "<p>The filetype you are attempting to upload is not allowed.</p>"); // invalid file type

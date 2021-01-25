@@ -54,7 +54,6 @@ class Products extends Admin_Controller
                 $buttons .= ' <button type="button" class="btn btn-default" onclick="removeFunc(' . $value['id'] . ')" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button>';
             }
 
-
             $img = '<img src="' . base_url($value['image']) . '" alt="' . $value['name'] . '" class="img-circle" width="50" height="50" />';
 
             $availability = ($value['availability'] == 1) ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-warning">Inactive</span>';
@@ -119,7 +118,7 @@ class Products extends Admin_Controller
                 'availability' => $this->input->post('availability'),
             );
 
-            if ($upload_image == FILE_SIZE_EXCEEDS) {
+            if ($upload_image == FILE_SIZE_EXCEEDS || $upload_image == INVALID_IMAGE_DIMESION || $upload_image == INVALID_FILE_TYPE) {
                 $this->session->set_flashdata('upload_error', $upload_image);
                 redirect('products/create', 'refresh');
             }
@@ -165,8 +164,11 @@ class Products extends Admin_Controller
         // assets/images/product_image
         $config['upload_path'] = 'assets/images/product_image';
         $config['file_name'] =  uniqid();
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = 'jpg|png';
         $config['max_size'] = '2000';
+        $config['maintain_ratio'] = TRUE;
+        $config['max_width']  = '150';
+        $config['max_height']  = '150';
 
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload('product_image')) {
@@ -222,7 +224,7 @@ class Products extends Admin_Controller
 
             if ($_FILES['product_image']['size'] > 0) {
                 $upload_image = $this->upload_image();
-                if ($upload_image == FILE_SIZE_EXCEEDS) {
+                if ($upload_image == FILE_SIZE_EXCEEDS || $upload_image == INVALID_IMAGE_DIMESION || $upload_image == INVALID_FILE_TYPE) {
                     $this->session->set_flashdata('upload_error', $upload_image);
                     redirect('products/update/' . $product_id, 'refresh');
                 }
