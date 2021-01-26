@@ -8,17 +8,15 @@
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Webapp Icon -->
-	<link rel="icon" href="<?php echo base_url('assets/images/webapp_icon/icon.png'); ?>" type="image/png" sizes="16x16">
+	<link rel="icon" href="<?= base_url('assets/images/webapp_image/BitSYS_logo.png'); ?>" type="image/png" sizes="16x16">
 	
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css'); ?>">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
-	<!-- Ionicons -->
-	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0-rc/dist/css/AdminLTE.min.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/AdminLTE-3.1.0-rc/dist/css/AdminLTE.min.css') ?>">
 	<!-- icheck bootstrap -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
@@ -81,11 +79,11 @@
 		<!-- /.login-card -->
 
 		<!-- jQuery -->
-		<script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
+		<script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
 		<!-- Bootstrap 3.3.7 -->
-		<script src="<?php echo base_url('assets/plugins/bootstrap/js/bootstrap.min.js') ?>"></script>
+		<script src="<?= base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 		<!-- AdminLTE App -->
-		<script src="<?php echo base_url('assets/dist/js/adminlte.min.js') ?>"></script>
+		<script src="<?= base_url('assets/AdminLTE-3.1.0-rc/dist/js/adminlte.min.js') ?>"></script>
 
 
 </body>
