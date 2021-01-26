@@ -93,8 +93,8 @@ class Company extends Admin_Controller
 		$config['allowed_types'] = 'jpg|png';
 		$config['max_size'] = '2000';
 		$config['maintain_ratio'] = TRUE;
-		$config['max_width']  = '150';
-		$config['max_height']  = '150';
+		$config['max_width']  = '250';
+		$config['max_height']  = '250';
 
 		$this->load->library('upload', $config);
 		if (!$this->upload->do_upload('company_image')) {

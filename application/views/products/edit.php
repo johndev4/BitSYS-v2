@@ -53,8 +53,8 @@
                   </div>
                 </div>
                 <small>MAX SIZE: 2MB</small> |
-                <small>MAX WIDTH: 150px</small> |
-                <small>MAX HEIGHT: 150px</small> |
+                <small>MAX WIDTH: 250px</small> |
+                <small>MAX HEIGHT: 250px</small> |
                 <small>RATIO: 1:1</small> |
                 <small>FILETYPE: JPG, PNG</small>
               </div>
