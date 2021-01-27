@@ -8,8 +8,8 @@
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Webapp Icon -->
-	<link rel="icon" href="<?= base_url('assets/images/webapp_image/BitSYS_logo.png'); ?>" type="image/png" sizes="16x16">
-	
+	<link rel="icon" href="<?= base_url(BITSYS_LOGO); ?>" type="image/png" sizes="16x16">
+
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css'); ?>">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
@@ -25,7 +25,8 @@
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a role="button"><b>BitSYS Login.</b></a>
+			<a role="button">
+				<img src="<?= base_url(BITSYS_LOGO) ?>" width="50" height="50" role="button"> <b>BitSYS Login.</b></a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="card">
