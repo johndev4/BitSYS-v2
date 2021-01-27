@@ -134,9 +134,7 @@ class Products extends Admin_Controller
         } else {
             // false case
 
-            // attributes 
             $attribute_data = $this->model_attributes->getActiveAttributeData();
-
             $attributes_final_data = array();
             foreach ($attribute_data as $k => $v) {
                 $attributes_final_data[$k]['attribute_data'] = $v;
@@ -145,7 +143,6 @@ class Products extends Admin_Controller
 
                 $attributes_final_data[$k]['attribute_value'] = $value;
             }
-
             $this->data['attributes'] = $attributes_final_data;
             $this->data['brands'] = $this->model_brands->getActiveBrands();
             $this->data['category'] = $this->model_category->getActiveCategroy();
@@ -171,12 +168,12 @@ class Products extends Admin_Controller
         $config['max_height']  = '250';
 
         $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('product_image')) {
+        if (!$this->upload->do_upload('image_upload')) {
             $error = $this->upload->display_errors();
             return $error;
         } else {
             $data = array('upload_data' => $this->upload->data());
-            $type = explode('.', $_FILES['product_image']['name']);
+            $type = explode('.', $_FILES['image_upload']['name']);
             $type = $type[count($type) - 1];
 
             $path = $config['upload_path'] . '/' . $config['file_name'] . '.' . $type;
@@ -222,7 +219,7 @@ class Products extends Admin_Controller
                 'availability' => $this->input->post('availability'),
             );
 
-            if ($_FILES['product_image']['size'] > 0) {
+            if ($_FILES['image_upload']['size'] > 0) {
                 $upload_image = $this->upload_image();
                 if ($upload_image == FILE_SIZE_EXCEEDS || $upload_image == INVALID_IMAGE_DIMESION || $upload_image == INVALID_FILE_TYPE) {
                     $this->session->set_flashdata('upload_error', $upload_image);

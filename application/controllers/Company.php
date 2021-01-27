@@ -45,7 +45,7 @@ class Company extends Admin_Controller
 				'currency' => $this->input->post('currency')
 			);
 
-			if ($_FILES['company_image']['size'] > 0) {
+			if ($_FILES['image_upload']['size'] > 0) {
 				$upload_image = $this->upload_image();
 				if ($upload_image == FILE_SIZE_EXCEEDS || $upload_image == INVALID_IMAGE_DIMESION || $upload_image == INVALID_FILE_TYPE) {
 					$this->session->set_flashdata('upload_error', $upload_image);
@@ -97,12 +97,12 @@ class Company extends Admin_Controller
 		$config['max_height']  = '250';
 
 		$this->load->library('upload', $config);
-		if (!$this->upload->do_upload('company_image')) {
+		if (!$this->upload->do_upload('image_upload')) {
 			$error = $this->upload->display_errors();
 			return $error;
 		} else {
 			$data = array('upload_data' => $this->upload->data());
-			$type = explode('.', $_FILES['company_image']['name']);
+			$type = explode('.', $_FILES['image_upload']['name']);
 			$type = $type[count($type) - 1];
 
 			$path = $config['upload_path'] . '/' . $config['file_name'] . '.' . $type;

@@ -37,26 +37,23 @@
                 <?php echo validation_errors(); ?></span>
 
               <div class="form-group">
-                <img src="<?= base_url(DEFAULT_IMAGE) ?>" width="150" height="150" class="img-circle" id="preview_image">
-                <button type="button" class="btn btn-default" id="remove_image"><i class="fas fa-times"></i></button>
-              </div>
-
-              <div class="form-group">
-                <label for="product_image">Image</label>
-                <div class="input-group">
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="product_image" name="product_image">
-                    <label class="custom-file-label" for="product_image">Choose file</label>
-                  </div>
-                  <div class="input-group-append">
-                    <span class="input-group-text">Upload</span>
-                  </div>
+                <img src="<?= base_url(DEFAULT_IMAGE) ?>" width="150" height="150" class="img-circle" id="preview_image" role="button">
+                <button type="button" class="btn btn-light rounded-circle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: relative; top: 55px; right: 45px;">
+                  <i class="fas fa-camera"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <input type="file" class="d-none" id="image_upload" name="image_upload" accept="image/x-png,image/jpeg">
+                  <a class="dropdown-item" role="button" id="upload_image">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload photo</a>
+                  <a class="dropdown-item" role="button" id="remove_image">
+                    <i class="fas fa-trash-alt"></i> Remove photo</a>
                 </div>
-                <small>MAX SIZE: 2MB</small> |
-                <small>MAX WIDTH: 250px</small> |
-                <small>MAX HEIGHT: 250px</small> |
-                <small>RATIO: 1:1</small> |
-                <small>FILETYPE: JPG, PNG</small>
+                <div><br>
+                  <small>MAX SIZE: 2MB</small> |
+                  <small>MAX DIMENSION: 250 x 250</small> |
+                  <small>RATIO: 1:1</small> |
+                  <small>FILETYPE: JPG, PNG</small>
+                </div>
               </div>
 
               <div class="form-group">
@@ -163,21 +160,23 @@
     $("#mainProductNav").addClass('menu-open');
     $("#addProductNav > a").addClass('active');
 
-    // initialize bs-custom-file-input
-    bsCustomFileInput.init();
+    // upload image
+    $("#upload_image").click(function() {
+      $("#image_upload").click();
+    });
 
-    // remove product image
+    // remove image
     $("#remove_image").click(function() {
       if ($("#preview_image").attr('src') != "<?= base_url(DEFAULT_IMAGE); ?>") {
         $("#preview_image").attr('src', '<?= base_url(DEFAULT_IMAGE); ?>');
-        $("#product_image").val('');
-        $('.custom-file-label').html('Choose file');
+        $("form[action='<?php base_url('company/index') ?>']").attr('action', '<?php base_url('company/index') ?>?remove_image=true');
+        $("#image_upload").val('');
       }
     });
 
     // sync image on preview
-    $("#product_image").on('input', function() {
-      var file = $("#product_image").get(0).files[0];
+    $("#image_upload").on('input', function() {
+      var file = $("#image_upload").get(0).files[0];
 
       if (file) {
         var reader = new FileReader();

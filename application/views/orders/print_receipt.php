@@ -10,7 +10,9 @@ $paid_status = ($order_data['paid_status'] == 1) ? "Paid" : "Unpaid";
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	<title> <?= $order_data['bill_no'] . '_order_invoice - ' . $order_date; ?> </title>
 
-	<link rel='stylesheet' type='text/css' href="<?= base_url('assets/Invoice/dist/css/style.css'); ?>">
+	<!-- Invoice style -->
+	<link rel='stylesheet' type='text/css' href="<?= base_url('assets/Invoice/dist/css/invoice.min.css'); ?>">
+	<!-- jQuery -->
 	<script type='text/javascript' src="<?= base_url('assets/plugins/jquery/jquery.min.js'); ?>"></script>
 
 </head>
