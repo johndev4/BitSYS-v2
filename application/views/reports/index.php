@@ -48,12 +48,12 @@
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Sales</h3>
+            <h3 class="card-title">Overall Monthly Sales</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             <div class="chart">
-              <canvas id="barChart" style="height:250px"></canvas> <!-- Canvas -->
+              <canvas id="lineChart" style="height:250px; min-height:250px"></canvas>
             </div>
           </div>
           <!-- /.card-body -->
@@ -61,7 +61,7 @@
         <!-- /.card -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Total Paid Orders - Report Data</h3>
+            <h3 class="card-title">Overall Paid Orders - Report Data</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -91,9 +91,9 @@
                 <tr>
                   <th>Total Amount</th>
                   <th>
-                    <?php //echo $company_currency . ' ' . array_sum($parking_data); 
+                    <?php
                     ?>
-                    <?php echo array_sum($results); ?>
+                    <?php echo $company_currency . ' ' . array_sum($results); ?>
                   </th>
                 </tr>
               </tbody>
@@ -126,39 +126,57 @@
      * -------
      * Here we will create a few charts using ChartJS
      */
+    
     var areaChartData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
       datasets: [{
-        label: 'Monthly Sales Rating',
-        backgroundColor: 'rgba(210, 214, 222, 1)',
-        borderColor: 'rgba(210, 214, 222, 1)',
-        pointRadius: false,
-        pointColor: 'rgba(210, 214, 222, 1)',
-        pointStrokeColor: '#c1c7d1',
-        pointHighlightFill: '#fff',
-        pointHighlightStroke: 'rgba(220,220,220,1)',
-        data: report_data
-      }]
+          label: 'Overall Monthly Sales Rating',
+          backgroundColor: 'rgba(60,141,188,0.9)',
+          borderColor: 'rgba(60,141,188,0.8)',
+          pointRadius: false,
+          pointColor: '#3b8bba',
+          pointStrokeColor: 'rgba(60,141,188,1)',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data: report_data // [65, 59, 80, 81, 56, 55, 40, 67, 80, 56, 78, 78]
+        }
+      ]
     }
 
-    //-------------
-    //- BAR CHART -
-    //-------------
-    var barChartCanvas = $('#barChart').get(0).getContext('2d')
-    var barChartData = areaChartData
-    var temp0 = areaChartData.datasets[0]
-    barChartData.datasets[0] = temp0
-
-    var barChartOptions = {
-      responsive: true,
+    var areaChartOptions = {
       maintainAspectRatio: false,
-      datasetFill: false
+      responsive: true,
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          gridLines: {
+            display: false,
+          }
+        }],
+        yAxes: [{
+          gridLines: {
+            display: false,
+          }
+        }]
+      }
     }
 
-    var barChart = new Chart(barChartCanvas, {
-      type: 'bar',
-      data: barChartData,
-      options: barChartOptions
+    //-------------
+    //- LINE CHART -
+    //--------------
+    var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
+    var lineChartOptions = jQuery.extend(true, {}, areaChartOptions)
+    var lineChartData = jQuery.extend(true, {}, areaChartData)
+    lineChartData.datasets[0].fill = false;
+    lineChartOptions.datasetFill = false
+
+    var lineChart = new Chart(lineChartCanvas, {
+      type: 'line',
+      data: lineChartData,
+      options: lineChartOptions
     })
+
   })
 </script>
