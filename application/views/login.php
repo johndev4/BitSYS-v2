@@ -26,7 +26,7 @@
 	<div class="login-box">
 		<div class="login-logo">
 			<a role="button">
-				<img src="<?= base_url(BITSYS_LOGO) ?>" width="50" height="50" role="button"> <b>BitSYS Login.</b></a>
+				<img src="<?= base_url(BITSYS_LOGO) ?>" width="40" height="40" role="button"> <b>BitSYS Login.</b></a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="card">
