@@ -99,7 +99,7 @@
 
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="text" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
               </div>
 
               <div class="form-group">
